@@ -6,7 +6,7 @@
 
 int main() {
 
-	// Create SFML's window.
+	// Create SFML's window
 
 	sf::RenderWindow render_window(sf::VideoMode(800, 600), "Hello world!");
 

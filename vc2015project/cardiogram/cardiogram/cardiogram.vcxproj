@@ -82,10 +82,10 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\murad\Documents\Visual Studio 2015\Projects\MIPT_project\3rdparty\SFGUI\include\;C:\Users\murad\Documents\Visual Studio 2015\Projects\MIPT_project\3rdparty\SFGUI\include\SFGUI\Renderers;C:\Users\murad\Documents\Visual Studio 2015\Projects\MIPT_project\3rdparty\SFGUI\include\SFGUI\Engines;C:\Users\murad\Documents\Visual Studio 2015\Projects\MIPT_project\3rdparty\SFML\include\SFML\Window;C:\Users\murad\Documents\Visual Studio 2015\Projects\MIPT_project\3rdparty\SFML\include\SFML\System;C:\Users\murad\Documents\Visual Studio 2015\Projects\MIPT_project\3rdparty\SFML\include\SFML\Network;C:\Users\murad\Documents\Visual Studio 2015\Projects\MIPT_project\3rdparty\SFML\include\SFML\Graphics;C:\Users\murad\Documents\Visual Studio 2015\Projects\MIPT_project\3rdparty\SFML\include\SFML\Audio;C:\Users\murad\Documents\Visual Studio 2015\Projects\MIPT_project\3rdparty\SFML\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\3rdparty\SFGUI\include\;$(SolutionDir)..\..\3rdparty\SFGUI\include\SFGUI\Renderers;$(SolutionDir)..\..\3rdparty\SFGUI\include\SFGUI\Engines;$(SolutionDir)..\..\3rdparty\SFML\include\SFML\Window;$(SolutionDir)..\..\3rdparty\SFML\include\SFML\System;$(SolutionDir)..\..\3rdparty\SFML\include\SFML\Network;$(SolutionDir)..\..\3rdparty\SFML\include\SFML\Graphics;$(SolutionDir)..\..\3rdparty\SFML\include\SFML\Audio;$(SolutionDir)..\..\3rdparty\SFML\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Users\murad\Documents\Visual Studio 2015\Projects\MIPT_project\3rdparty\SFML\lib;C:\Users\murad\Documents\Visual Studio 2015\Projects\MIPT_project\3rdparty\SFGUI\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\3rdparty\SFML\lib;$(SolutionDir)..\..\3rdparty\SFGUI\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfgui-d.lib;sfgui-s-d.lib;sfml-graphics-d.lib;sfml-main-d.lib;sfml-window-d.lib;sfml-system-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -103,12 +103,12 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\murad\Documents\Visual Studio 2015\Projects\MIPT_project\3rdparty\SFGUI\include\;C:\Users\murad\Documents\Visual Studio 2015\Projects\MIPT_project\3rdparty\SFGUI\include\SFGUI\Renderers;C:\Users\murad\Documents\Visual Studio 2015\Projects\MIPT_project\3rdparty\SFGUI\include\SFGUI\Engines;C:\Users\murad\Documents\Visual Studio 2015\Projects\MIPT_project\3rdparty\SFML\include\SFML\Window;C:\Users\murad\Documents\Visual Studio 2015\Projects\MIPT_project\3rdparty\SFML\include\SFML\System;C:\Users\murad\Documents\Visual Studio 2015\Projects\MIPT_project\3rdparty\SFML\include\SFML\Network;C:\Users\murad\Documents\Visual Studio 2015\Projects\MIPT_project\3rdparty\SFML\include\SFML\Graphics;C:\Users\murad\Documents\Visual Studio 2015\Projects\MIPT_project\3rdparty\SFML\include\SFML\Audio;C:\Users\murad\Documents\Visual Studio 2015\Projects\MIPT_project\3rdparty\SFML\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\3rdparty\SFGUI\include\;$(SolutionDir)..\..\3rdparty\SFGUI\include\SFGUI\Renderers;$(SolutionDir)..\..\3rdparty\SFGUI\include\SFGUI\Engines;$(SolutionDir)..\..\3rdparty\SFML\include\SFML\Window;$(SolutionDir)..\..\3rdparty\SFML\include\SFML\System;$(SolutionDir)..\..\3rdparty\SFML\include\SFML\Network;$(SolutionDir)..\..\3rdparty\SFML\include\SFML\Graphics;$(SolutionDir)..\..\3rdparty\SFML\include\SFML\Audio;$(SolutionDir)..\..\3rdparty\SFML\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\Users\murad\Documents\Visual Studio 2015\Projects\MIPT_project\3rdparty\SFML\lib;C:\Users\murad\Documents\Visual Studio 2015\Projects\MIPT_project\3rdparty\SFGUI\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\3rdparty\SFML\lib;$(SolutionDir)..\..\3rdparty\SFGUI\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfgui-d.lib;sfgui-s-d.lib;sfml-graphics-d.lib;sfml-main-d.lib;sfml-window-d.lib;sfml-system-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
