@@ -4,10 +4,30 @@
     <Filter Include="src">
       <UniqueIdentifier>{0286105f-5b06-41f7-93b0-d4c1b3d7f7f3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\cardiogram">
+      <UniqueIdentifier>{c32e058a-89c7-455c-aa25-a6379cf642a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\image">
+      <UniqueIdentifier>{84132881-aa36-4def-baba-5051346332bc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\src\cardiogram.cpp">
+    <ClCompile Include="..\..\..\src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\cardiogram\Cardiogram.cpp">
+      <Filter>src\cardiogram</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\image\Image.cpp">
+      <Filter>src\image</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\src\cardiogram\Cardiogram.h">
+      <Filter>src\cardiogram</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\image\Image.h">
+      <Filter>src\image</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
