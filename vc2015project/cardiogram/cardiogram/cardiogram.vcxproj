@@ -24,8 +24,9 @@
     <ClCompile Include="..\..\..\src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\src\cardiogram\Cardiogram.h" />
-    <ClInclude Include="..\..\..\src\image\Image.h" />
+    <ClInclude Include="..\..\..\src\include\Cardiogram.h" />
+    <ClInclude Include="..\..\..\src\include\Image.h" />
+    <ClInclude Include="..\..\..\src\include\include.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{25CA00FE-BCEA-4B7E-A0B9-CFBAB5205388}</ProjectGuid>
@@ -78,23 +79,23 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)..\..\bin</OutDir>
+    <OutDir>$(SolutionDir)\..\..\bin\</OutDir>
     <IntDir>$(SolutionDir)..\..\build\$(ProjectName)'$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)Debug</TargetName>
     <SourcePath>$(SolutionDir)..\..\src</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)..\..\bin</OutDir>
+    <OutDir>$(SolutionDir)\..\..\bin\</OutDir>
     <IntDir>$(SolutionDir)..\..\build\$(ProjectName)'$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)Debug</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)..\..\bin</OutDir>
+    <OutDir>$(SolutionDir)..\..\bin\</OutDir>
     <IntDir>$(SolutionDir)..\..\build\$(ProjectName)'$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)..\..\bin</OutDir>
+    <OutDir>$(SolutionDir)\..\..\bin\</OutDir>
     <IntDir>$(SolutionDir)..\..\build\$(ProjectName)'$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
@@ -103,11 +104,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\3rdparty\SFGUI\include;$(SolutionDir)..\..\3rdparty\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\3rdparty\SFGUI\include;$(SolutionDir)..\..\3rdparty\SFML\include;$(SolutionDir)..\..\src\include;$(SolutionDir)..\..\3rdparty\FANN\src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUGMODE;SFML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\..\3rdparty\SFML\lib;$(SolutionDir)..\..\3rdparty\SFGUI\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-main-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfgui-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\3rdparty\SFML\lib;$(SolutionDir)..\..\3rdparty\SFGUI\lib;$(SolutionDir)..\..\3rdparty\FANN\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-main-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfgui-d.lib;%(AdditionalDependencies);fannfixed.lib;fanndouble.lib;fannfloat.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -115,11 +117,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\3rdparty\SFGUI\include;$(SolutionDir)..\..\3rdparty\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\3rdparty\SFGUI\include;$(SolutionDir)..\..\3rdparty\SFML\include;$(SolutionDir)..\..\src\include;$(SolutionDir)..\..\3rdparty\FANN\src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\..\3rdparty\SFML\lib;$(SolutionDir)..\..\3rdparty\SFGUI\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-main-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfgui-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\3rdparty\SFML\lib;$(SolutionDir)..\..\3rdparty\SFGUI\lib;$(SolutionDir)..\..\3rdparty\FANN\bin\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-main-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfgui-d.lib;%(AdditionalDependencies);fannfixed.lib;fanndouble.lib;fannfloat.lib</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
     </Link>
@@ -131,13 +133,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\3rdparty\SFGUI\include;$(SolutionDir)..\..\3rdparty\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\3rdparty\SFGUI\include;$(SolutionDir)..\..\3rdparty\SFML\include;$(SolutionDir)..\..\src\include;$(SolutionDir)..\..\3rdparty\FANN\src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SFML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\..\3rdparty\SFML\lib;$(SolutionDir)..\..\3rdparty\SFGUI\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics.lib;sfml-main.lib;sfml-window.lib;sfml-system.lib;sfgui.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\3rdparty\SFML\lib;$(SolutionDir)..\..\3rdparty\SFGUI\lib;$(SolutionDir)..\..\3rdparty\FANN\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics.lib;sfml-main.lib;sfml-window.lib;sfml-system.lib;sfgui.lib;%(AdditionalDependencies);fanndouble.lib;fannfixed.lib;fannfloat.lib;fannfixed.lib;fanndouble.lib;fannfloat.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -147,13 +150,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)..\..\3rdparty\SFGUI\include;$(SolutionDir)..\..\3rdparty\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\3rdparty\SFGUI\include;$(SolutionDir)..\..\3rdparty\SFML\include;$(SolutionDir)..\..\src\include;$(SolutionDir)..\..\3rdparty\FANN\src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SFML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)..\..\3rdparty\SFML\lib;$(SolutionDir)..\..\3rdparty\SFGUI\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics.lib;sfml-main.lib;sfml-window.lib;sfml-system.lib;sfgui.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\3rdparty\SFML\lib;$(SolutionDir)..\..\3rdparty\SFGUI\lib;$(SolutionDir)..\..\3rdparty\FANN\bin\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics.lib;sfml-main.lib;sfml-window.lib;sfml-system.lib;sfgui.lib;%(AdditionalDependencies);fanndouble.lib;fannfixed.lib;fannfloat.lib</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
     </Link>

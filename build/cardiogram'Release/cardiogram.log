@@ -1,6 +1,8 @@
-﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+﻿  main.cpp
   Generating code
-  All 4 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  1 of 4 functions (25.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  cardiogram.vcxproj -> C:\Users\murad\Documents\GitHub\cardiogram\vc2015project\cardiogram\..\..\bin\cardiogram.exe
-  cardiogram.vcxproj -> C:\Users\murad\Documents\GitHub\cardiogram\vc2015project\cardiogram\..\..\bin\cardiogram.pdb (Full PDB)
+  cardiogram.vcxproj -> C:\Users\murad\Documents\GitHub\cardiogram\vc2015project\cardiogram\\..\..\bin\cardiogram.exe
+  cardiogram.vcxproj -> C:\Users\murad\Documents\GitHub\cardiogram\vc2015project\cardiogram\\..\..\bin\cardiogram.pdb (Full PDB)
