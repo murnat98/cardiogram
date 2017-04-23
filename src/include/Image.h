@@ -22,11 +22,14 @@ public:
 	Image();
 	Image(const::std::string& fileName);
 
-	Pixels getGraph() const;
+	Pixels getGraph();
 	Chars  getGraphChar() const;
 
 #ifdef DEBUGMODE
 	bool ok()							  const;
 	void dump(const std::string& varName) const;
 #endif // DEBUGMODE
+
+private:
+	Pixels result_;
 };
