@@ -1,0 +1,4 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (C:\Users\murad\Documents\GitHub\cardiogram\vc2015project\cardiogram\..\..\build\) contains files shared from another project (cardiogram.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  main.cpp
+  black_white.vcxproj -> C:\Users\murad\Documents\GitHub\cardiogram\vc2015project\cardiogram\..\..\bin\black_whiteDebug.exe
+  black_white.vcxproj -> C:\Users\murad\Documents\GitHub\cardiogram\vc2015project\cardiogram\..\..\bin\black_whiteDebug.pdb (Partial PDB)

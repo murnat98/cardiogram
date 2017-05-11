@@ -7,7 +7,7 @@
 #ifdef DEBUGMODE
 
 #define IMAGE_DUMP(image) image.dump(#image);
-#define IMAGE_OK_DUMP(image) if (!image.ok()) IMAGE_DUMP(image);
+#define IMAGE_OK_DUMP(image) if (!image.ok()) { IMAGE_DUMP(image); assert(!"image not ok"); }
 
 #else
 
@@ -19,6 +19,11 @@
 class Image : public sf::Image
 {
 public:
+	enum errors
+	{
+		LOADFILE_ERROR
+	};
+
 	Image();
 	Image(const::std::string& fileName);
 
@@ -31,5 +36,6 @@ public:
 #endif // DEBUGMODE
 
 private:
-	Pixels result_;
+	Pixels graphics_;
+	std::string fileName_;
 };

@@ -2,6 +2,13 @@
 
 #include <map>
 #include <vector>
+#include <iostream>
 
-using Pixels = std::map<int, int>;
+#ifdef DEBUGMODE
+
+#include <iostream>
+
+#endif // DEBUGMODE
+
+using Pixels = std::vector<std::pair<int, int> >;
 using Chars  = std::vector<int>;

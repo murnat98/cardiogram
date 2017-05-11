@@ -9,6 +9,16 @@ Cardiogram::Cardiogram(const std::string& fileName) :
 Cardiogram::~Cardiogram()
 {}
 
+void Cardiogram::analyze() const
+{
+
+}
+
+void Cardiogram::saveResult() const
+{
+
+}
+
 #ifdef DEBUGMODE
 
 bool Cardiogram::ok() const

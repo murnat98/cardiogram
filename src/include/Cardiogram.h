@@ -11,8 +11,8 @@
 
 #else
 
-#define CARDIOGRAM_DUMP(cardiogram) cardiogram.dump(#cardiogram);
-#define CARDIOGRAM_OK_DUMP(cardiogram) if (!cardiogram.ok()) CARDIOGRAM_DUMP(cardiogram);
+#define CARDIOGRAM_DUMP(cardiogram)
+#define CARDIOGRAM_OK_DUMP(cardiogram)
 
 #endif // DEBUGMODE
 
@@ -25,6 +25,7 @@ public:
 	~Cardiogram();
 
 	void analyze() const; // now it is void, then it will be changed (may be some class Result)
+	void saveResult() const;
 
 #ifdef DEBUGMODE
 	bool ok  ()							  const;

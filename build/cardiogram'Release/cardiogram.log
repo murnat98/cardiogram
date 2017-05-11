@@ -1,10 +1,11 @@
-﻿  Cardiogram.cpp
-  Image.cpp
-  main.cpp
-  Generating code
-  1 of 1 functions (100.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  cardiogram.vcxproj -> C:\Users\murad\Documents\GitHub\cardiogram\vc2015project\cardiogram\\..\..\bin\cardiogram.exe
-  cardiogram.vcxproj -> C:\Users\murad\Documents\GitHub\cardiogram\vc2015project\cardiogram\\..\..\bin\cardiogram.pdb (Full PDB)
+﻿  graph.cpp
+..\..\..\src\image\graph.cpp(60): error C2039: 'cout': is not a member of 'std'
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\iterator(14): note: see declaration of 'std'
+..\..\..\src\image\graph.cpp(60): error C2065: 'cout': undeclared identifier
+..\..\..\src\image\graph.cpp(64): error C2039: 'cout': is not a member of 'std'
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\iterator(14): note: see declaration of 'std'
+..\..\..\src\image\graph.cpp(64): error C2065: 'cout': undeclared identifier
+..\..\..\src\image\graph.cpp(67): error C2039: 'cout': is not a member of 'std'
+  C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\iterator(14): note: see declaration of 'std'
+..\..\..\src\image\graph.cpp(67): error C2065: 'cout': undeclared identifier
+  test.cpp
