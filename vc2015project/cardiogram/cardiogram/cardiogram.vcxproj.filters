@@ -30,7 +30,9 @@
     <ClCompile Include="..\..\..\src\image\graph.cpp">
       <Filter>src\image</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\test.cpp" />
+    <ClCompile Include="..\..\..\src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\src\include\Cardiogram.h">
@@ -40,12 +42,6 @@
       <Filter>src\include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\include\Image.h">
-      <Filter>src\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\include\Button.h">
-      <Filter>src\include</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\src\include\Interface.h">
       <Filter>src\include</Filter>
     </ClInclude>
   </ItemGroup>

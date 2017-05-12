@@ -6,16 +6,10 @@
 using Distances = std::vector<double>;
 
 void average       (Pixels& graphics);
-Pixels scaleAverage(const Pixels& graphics);
 
-template <typename T>
-T arithmeticalMean(const std::vector<T>& values);
 std::pair<int, int> arithmeticalMeanPair(const Pixels& pixels);
 
 bool isInRange(const sf::Color& color, size_t x, size_t y, uint8_t leftRange, uint8_t rightRange);
-bool isNearPoint(int distance);
-
-Distances getDistances(const Pixels& pixels);
 
 Pixels Image::getGraph()
 {
@@ -29,13 +23,10 @@ Pixels Image::getGraph()
 		throw LOADFILE_ERROR;
 	}
 
-	Distances y_scale; // millivoltage
-	Pixels scalePoints;       // points in the image, where are light gray lines(for scale)
-
 	sf::Vector2u imageSize = getSize();
 	sf::Color color;
 
-	for (size_t x = 0; x < imageSize.x; x++)
+	for (size_t x = 0; x < imageSize.x; x++) // TODO: to some function
 	{
 		for (size_t y = 0; y < imageSize.y; y++)
 		{
@@ -46,41 +37,39 @@ Pixels Image::getGraph()
 			{
 				graphics_.push_back(std::make_pair(x, y));
 			}
-			
+		}
+	}
+
+	std::vector<int> pointCountPerLine;
+	Pixels lines;
+
+	for (size_t y = 0; y < imageSize.y; y++) // TODO: to some function
+	{
+		for (size_t x = 0; x < imageSize.x; x++)
+		{
+			color = getPixel(x, y);
+
 			if (isInRange(color, x, y, 120, 170))
 			{
-				scalePoints.push_back(std::make_pair(x, y));
+				lines.push_back(std::make_pair(x, y));
 			}
 		}
-		//TODO: debug
-		/*for (const auto& scale : scalePoints)
-		{
-			std::cout << std::get<0>(scale) << " " << std::get<1>(scale) << std::endl;
-		}*/
-		std::cout << "---------------------------------------------" << std::endl;
-		scalePoints = scaleAverage(scalePoints);
-		for (const auto& scale : scalePoints)
-		{
-			std::cout << std::get<0>(scale) << " " << std::get<1>(scale) << std::endl;
-		}
-		y_scale = getDistances(scalePoints);
-		std::cout << "============================================" << std::endl;
-		/*for (const auto& distance : y_scale)
-		{
-			std::cout << distance << std::endl;
-		}*/
-		throw LOADFILE_ERROR;
-		//y_scale.push_back(getDistances(scalePoints));
+
+		pointCountPerLine.push_back(lines.size());
+		lines.clear();
 	}
-	
-	//average(y_scale);
+	for (const auto& count : pointCountPerLine)
+	{
+		std::cout << count << std::endl;
+	}
+
 	average(graphics_);
 
 	return graphics_;
 }
 
 //This function averages by x:
-//the only y matches to one x (the arithmetical mean) (the result)
+//the only y matches to one x (the arithmetical mean)
 void average(Pixels& graphics)
 {
 	Pixels result;
@@ -106,6 +95,8 @@ void average(Pixels& graphics)
 	}
 	graphics.clear();
 	graphics = result;
+
+	//TODO: return Pixels
 }
 
 int operator -(const std::pair<int, int>& pair1, const std::pair<int, int>& pair2)
@@ -116,7 +107,6 @@ int operator -(const std::pair<int, int>& pair1, const std::pair<int, int>& pair
 #define y0 PAIR(pair2, 0)
 #define y1 PAIR(pair2, 1)
 
-	//return sqrt((x0 - x1) * (x0 - x1) - (y0 - y1) * (y0 - y1));
 	return y0 - y1;
 
 #undef y1
@@ -124,50 +114,6 @@ int operator -(const std::pair<int, int>& pair1, const std::pair<int, int>& pair
 #undef x1
 #undef x0
 #undef PAIR
-}
-
-//this function assumes that x components of each point equal
-//it averages the near points
-Pixels scaleAverage(const Pixels& graphics)
-{
-	Pixels result;
-
-	std::vector<int> nearPoints;
-	int distance = 0;
-
-	for (size_t i = 1; i < graphics.size(); i++)
-	{
-		distance = graphics[i] - graphics[i - 1];
-		if (isNearPoint(distance))
-		{
-			nearPoints.push_back(std::get<1>(graphics[i])); // the y component
-		}
-		else
-		{
-			//nearPoints.push_back(arithmeticalMean<int>(nearPoints));
-			result.push_back(std::make_pair(std::get<0>(graphics[0]), arithmeticalMean(nearPoints)));
-
-			nearPoints.erase(nearPoints.begin(), nearPoints.end());
-		}
-	}
-
-	return result;
-}
-
-template <typename T>
-T arithmeticalMean(const std::vector<T>& values)
-{
-	int counter = 0;
-	T sum = 0;
-
-	for (const auto& value : values)
-	{
-		sum += value;
-
-		++counter;
-	}
-
-	return counter ? sum / counter : sum;
 }
 
 std::pair<int, int> arithmeticalMeanPair(const Pixels& pixels)
@@ -213,30 +159,4 @@ bool isNearPoint(int distance)
 	{
 		return false;
 	}
-}
-
-Distances getDistances(const Pixels& pixels)
-{
-	Distances result(pixels.size());
-	size_t counter = 0;
-
-	std::pair<int, int> prevPoint;
-	bool prevPointInit = false;
-	for (const auto& point : pixels)
-	{
-		if (!prevPointInit)
-		{
-			prevPoint = point;
-
-			prevPointInit = true;
-			continue;
-		}
-
-		result[counter] = point - prevPoint;
-
-		prevPoint = point;
-		++counter;
-	}
-
-	return result;
 }

@@ -23,14 +23,12 @@
     <ClCompile Include="..\..\..\src\image\graph.cpp" />
     <ClCompile Include="..\..\..\src\image\graphChar.cpp" />
     <ClCompile Include="..\..\..\src\image\Image.cpp" />
-    <ClCompile Include="..\..\..\src\test.cpp" />
+    <ClCompile Include="..\..\..\src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\src\include\Button.h" />
     <ClInclude Include="..\..\..\src\include\Cardiogram.h" />
     <ClInclude Include="..\..\..\src\include\Image.h" />
     <ClInclude Include="..\..\..\src\include\include.h" />
-    <ClInclude Include="..\..\..\src\include\Interface.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{25CA00FE-BCEA-4B7E-A0B9-CFBAB5205388}</ProjectGuid>
