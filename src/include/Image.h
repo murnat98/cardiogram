@@ -4,6 +4,7 @@
 #include <string>
 #include <SFML\Graphics.hpp>
 
+#define TYPE_CONTROL(type) type == 1 || type == 2 || type == 5 || type == 10 || type == 11
 #ifdef DEBUGMODE
 
 #define IMAGE_DUMP(image) image.dump(#image);
@@ -44,6 +45,7 @@ public:
 private:
 	int  getAbsExtremum()                         const;
 	void getExtremums  (std::vector<int>& maxes)  const; // return to maxes(it's more efficient)
+	bool compare       (int a, int b)             const;
 
 	Pixels graphics_;
 	std::string fileName_;

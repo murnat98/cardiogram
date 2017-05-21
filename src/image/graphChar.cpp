@@ -33,7 +33,7 @@ int Image::getAbsExtremum() const
 	{
 		int y = std::get<1>(point);
 
-		if (maxFlag || y > max)
+		if (maxFlag || compare(y, max))
 		{
 			max = y;
 			maxFlag = false;
@@ -55,7 +55,7 @@ void Image::getExtremums(std::vector<int>& maxes) const
 
 		if (y >= absExtremum - MAX_LINE)
 		{
-			if (extremumFlag || y > localExtremum)
+			if (extremumFlag || compare(y, localExtremum))
 			{
 				localExtremum = y;
 				extremumFlag = false;
@@ -70,5 +70,17 @@ void Image::getExtremums(std::vector<int>& maxes) const
 
 			extremumFlag = true;
 		}
+	}
+}
+
+bool Image::compare(int a, int b) const
+{
+	if (TYPE_CONTROL(type_))
+	{
+		return a > b;
+	}
+	else
+	{
+		return a < b;
 	}
 }

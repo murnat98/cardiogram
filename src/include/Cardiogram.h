@@ -19,8 +19,8 @@
 class Cardiogram
 {
 public:
-	Cardiogram();
-	Cardiogram(const std::string& fileName);
+	Cardiogram(int type);
+	Cardiogram(const std::string& fileName, int type);
 
 	~Cardiogram();
 
@@ -34,4 +34,5 @@ public:
 
 private:
 	Image image_;
+	int type_;
 };
