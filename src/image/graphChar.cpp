@@ -3,25 +3,38 @@
 
 const int MAX_LINE = 100;
 
-int Image::get_R_Char() const
+int Image::get_R_Char()
 {	
 	int sum = 0, counter = 0;
 
-	std::vector<int> extremumes;
-	getExtremums(extremumes);
+	getExtremes(extremes_);
 
-	std::for_each(extremumes.begin(), extremumes.end(), [&](const auto& max)
+	std::for_each(extremes_.begin(), extremes_.end(), [&](const auto& max)
 	{
-		sum += max;
+		sum += std::get<1>(max);
 		++counter;
 	});
 
 	return counter ? sum / counter : -1; // TODO: think about returning the errors
 }
 
-int Image::get_RR_Char() const
+std::vector<int> Image::get_RR_Char()
 {
-	return 0;
+	if (extremes_.empty())
+	{
+		getExtremes(extremes_);
+	}
+	size_t size = extremes_.size();
+
+	std::vector<int> distances(size + 1);
+	distances.assign(distances.size(), -1);
+
+	for (size_t i = 1; i < size; ++i)
+	{
+		distances[i - 1] = abs(std::get<0>(extremes_[i]) - std::get<0>(extremes_[i - 1]));
+	}
+
+	return distances;
 }
 
 int Image::getAbsExtremum() const
@@ -43,21 +56,23 @@ int Image::getAbsExtremum() const
 	return max;
 }
 
-void Image::getExtremums(std::vector<int>& maxes) const
+void Image::getExtremes(Pixels& maxes) const
 {
 	int absExtremum   = getAbsExtremum();
-	int localExtremum = 0;
+	int localExtremum_y = 0, localExtremum_x = 0;
 	bool extremumFlag = true;
 	
 	for (const auto& point : graphics_)
 	{
+		int x = std::get<0>(point);
 		int y = std::get<1>(point);
 
 		if (y >= absExtremum - MAX_LINE)
 		{
-			if (extremumFlag || compare(y, localExtremum))
+			if (extremumFlag || compare(y, localExtremum_y))
 			{
-				localExtremum = y;
+				localExtremum_y = y;
+				localExtremum_x = x;
 				extremumFlag = false;
 			}
 		}
@@ -65,7 +80,7 @@ void Image::getExtremums(std::vector<int>& maxes) const
 		{
 			if (!extremumFlag)
 			{
-				maxes.push_back(localExtremum);
+				maxes.push_back(std::make_pair(localExtremum_x, localExtremum_y));
 			}
 
 			extremumFlag = true;

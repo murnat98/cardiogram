@@ -30,8 +30,8 @@ public:
 
 	Pixels getGraph();
 	
-	int get_R_Char()   const;
-	int get_RR_Char()  const;
+	int get_R_Char();
+	std::vector<int> get_RR_Char();
 	int get_S_Char()   const;
 	int get_QRS_Char() const;
 	int get_P_Char()   const;
@@ -44,10 +44,11 @@ public:
 
 private:
 	int  getAbsExtremum()                         const;
-	void getExtremums  (std::vector<int>& maxes)  const; // return to maxes(it's more efficient)
+	void getExtremes   (Pixels& maxes)  const; // return to maxes(it's more efficient)
 	bool compare       (int a, int b)             const;
 
 	Pixels graphics_;
 	std::string fileName_;
 	int type_;
+	Pixels extremes_;
 };
