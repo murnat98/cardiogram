@@ -20,7 +20,7 @@ bool Image::ok() const
 
 void Image::dump(const std::string& varName) const
 {
-	/*std::ofstream fout("Imagedump.dmp", std::ofstream::out);
+	std::ofstream fout("Imagedump.dmp", std::ofstream::out);
 
 	fout << "VarName = " << varName << std::endl;
 
@@ -31,16 +31,16 @@ void Image::dump(const std::string& varName) const
 	}
 	fout << "}" << std::endl;
 
-	fout.close();*/
+	fout.close();
 
-	std::ofstream fout("for_excel.txt", std::ofstream::out);
+	/*std::ofstream fout("for_excel.csv", std::ofstream::out);
 
 	for (const auto &point : graphics_)
 	{
-		fout << std::get<1>(point) << ", ";
+		fout << std::get<0>(point) << ";" << std::get<1>(point) << "\n";
 	}
 
-	fout.close();
+	fout.close();*/
 }
 
 #endif // DEBUGMODE

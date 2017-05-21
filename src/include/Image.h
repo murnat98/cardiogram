@@ -28,7 +28,13 @@ public:
 	Image(const::std::string& fileName);
 
 	Pixels getGraph();
-	Chars  getGraphChar() const;
+	
+	int get_R_Char()   const;
+	int get_RR_Char()  const;
+	int get_S_Char()   const;
+	int get_QRS_Char() const;
+	int get_P_Char()   const;
+	int get_T_Char()   const;
 
 #ifdef DEBUGMODE
 	bool ok()							  const;

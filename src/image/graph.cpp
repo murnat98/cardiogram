@@ -2,14 +2,18 @@
 #include <utility>
 #include <Image.h>
 #include <cmath>
+#include <algorithm>
 
 using Distances = std::vector<double>;
 
 void average       (Pixels& graphics);
 
+int operator -(const std::pair<int, int>& pair1, const std::pair<int, int>& pair2);
+
 std::pair<int, int> arithmeticalMeanPair(const Pixels& pixels);
 
 bool isInRange(const sf::Color& color, size_t x, size_t y, uint8_t leftRange, uint8_t rightRange);
+bool isNearPoint(int distance);
 
 Pixels Image::getGraph()
 {
@@ -28,19 +32,50 @@ Pixels Image::getGraph()
 
 	for (size_t x = 0; x < imageSize.x; x++) // TODO: to some function
 	{
+		std::vector<Pixels> tmpPoints(imageSize.y);
+		size_t tmpPointCounter = 0;
+
 		for (size_t y = 0; y < imageSize.y; y++)
 		{
 			color = getPixel(x, y); 
 			//std::cout << y << "  -  " << (int)color.r << " " << (int)color.g << " " << (int)color.b << std::endl;
 
-			if (isInRange(color, x, y, 0, 50)) // get graphics
+			if (isInRange(color, x, y, 0, 20)) // get graphics
 			{
-				graphics_.push_back(std::make_pair(x, y));
+				auto point = std::make_pair(x, imageSize.y - y - 1);
+				
+				if (!tmpPoints[tmpPointCounter].empty())
+				{
+					if (isNearPoint(abs(point - tmpPoints[tmpPointCounter].back())))
+					{
+						tmpPoints[tmpPointCounter].push_back(point);
+					}
+					else
+					{
+						tmpPoints[++tmpPointCounter].push_back(point);
+					}
+				}
+				else
+				{
+					tmpPoints[tmpPointCounter].push_back(point);
+				}
 			}
 		}
+
+		for (size_t i = 0; i < tmpPointCounter; ++i)
+		{
+			if (tmpPoints[i].size() > 20)
+			{
+				std::for_each(tmpPoints[i].begin(), tmpPoints[i].end(), [&](const auto& point)
+				{
+					graphics_.push_back(point);
+				});
+			}
+		}
+
 	}
 
-	std::vector<int> pointCountPerLine;
+	/*std::vector<int> pointCountPerLine;
 	Pixels lines;
 
 	for (size_t y = 0; y < imageSize.y; y++) // TODO: to some function
@@ -61,7 +96,7 @@ Pixels Image::getGraph()
 	for (const auto& count : pointCountPerLine)
 	{
 		std::cout << count << std::endl;
-	}
+	}*/
 
 	average(graphics_);
 
@@ -102,9 +137,10 @@ void average(Pixels& graphics)
 int operator -(const std::pair<int, int>& pair1, const std::pair<int, int>& pair2)
 {
 #define PAIR(name, number) std::get<number>(name)
+
 #define x0 PAIR(pair1, 0)
-#define x1 PAIR(pair1, 1)
-#define y0 PAIR(pair2, 0)
+#define x1 PAIR(pair2, 0)
+#define y0 PAIR(pair1, 1)
 #define y1 PAIR(pair2, 1)
 
 	return y0 - y1;
@@ -113,6 +149,7 @@ int operator -(const std::pair<int, int>& pair1, const std::pair<int, int>& pair
 #undef y0
 #undef x1
 #undef x0
+
 #undef PAIR
 }
 
