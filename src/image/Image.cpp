@@ -1,11 +1,12 @@
 #include <Image.h>
 #include <fstream>
 
-Image::Image() :
-	graphics_()
+Image::Image(int type) :
+	type_(type)
 {}
 
-Image::Image(const std::string& fileName)
+Image::Image(const std::string& fileName, int type) :
+	type_(type)
 {
 	loadFromFile(fileName);
 	fileName_ = fileName;

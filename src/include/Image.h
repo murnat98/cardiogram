@@ -24,8 +24,8 @@ public:
 		LOADFILE_ERROR
 	};
 
-	Image();
-	Image(const::std::string& fileName);
+	Image(int type);
+	Image(const std::string& fileName, int type);
 
 	Pixels getGraph();
 	
@@ -42,6 +42,10 @@ public:
 #endif // DEBUGMODE
 
 private:
+	int  getAbsExtremum()                         const;
+	void getExtremums  (std::vector<int>& maxes)  const; // return to maxes(it's more efficient)
+
 	Pixels graphics_;
 	std::string fileName_;
+	int type_;
 };

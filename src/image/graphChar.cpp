@@ -1,48 +1,74 @@
 #include <Image.h>
 #include <algorithm>
 
-const int MAX_TIME = 50;
+const int MAX_LINE = 100;
 
 int Image::get_R_Char() const
+{	
+	int sum = 0, counter = 0;
+
+	std::vector<int> extremumes;
+	getExtremums(extremumes);
+
+	std::for_each(extremumes.begin(), extremumes.end(), [&](const auto& max)
+	{
+		sum += max;
+		++counter;
+	});
+
+	return counter ? sum / counter : -1; // TODO: think about returning the errors
+}
+
+int Image::get_RR_Char() const
 {
+	return 0;
+}
+
+int Image::getAbsExtremum() const
+{
+	int max = 0;
 	bool maxFlag = true;
-	int yMax = std::get<1>(graphics_[0]);
-	int maxCounter = 0;
-	std::vector<int> maxes;
 
 	for (const auto& point : graphics_)
 	{
-		int x = std::get<0>(point);
 		int y = std::get<1>(point);
 
-		if (maxFlag || y > yMax)
+		if (maxFlag || y > max)
 		{
-			yMax = y;
-
-			if (maxCounter > MAX_TIME)
-			{
-				maxFlag = true;
-			}
-			if (maxFlag)
-			{
-				maxes.push_back(yMax);
-			}
-
+			max = y;
 			maxFlag = false;
-			++maxCounter;
 		}
 	}
 
-	int sum = 0;
-	std::for_each(maxes.begin(), maxes.end(), [&](const auto& max)
-	{
-		sum += max;
-	});
+	return max;
+}
 
-	for (const auto& max : maxes)
+void Image::getExtremums(std::vector<int>& maxes) const
+{
+	int absExtremum   = getAbsExtremum();
+	int localExtremum = 0;
+	bool extremumFlag = true;
+	
+	for (const auto& point : graphics_)
 	{
-		std::cout << max << std::endl;
+		int y = std::get<1>(point);
+
+		if (y >= absExtremum - MAX_LINE)
+		{
+			if (extremumFlag || y > localExtremum)
+			{
+				localExtremum = y;
+				extremumFlag = false;
+			}
+		}
+		else
+		{
+			if (!extremumFlag)
+			{
+				maxes.push_back(localExtremum);
+			}
+
+			extremumFlag = true;
+		}
 	}
-
-	return sum / maxes.size();
 }

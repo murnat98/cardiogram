@@ -1,5 +1,5 @@
 VarName = image
-graphics_[0x00AFFE54]
+graphics_[0x006FFC20]
 {
 	0, 701
 	1, 701

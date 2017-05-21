@@ -4,7 +4,7 @@
 
 int main()
 {
-	Image image("cardiogram.jpg");
+	Image image("cardiogram.jpg", 1);
 	Pixels graphics;
 
 	try
