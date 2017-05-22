@@ -1,30 +1,84 @@
-#include <iostream>
-#include <utility>
+#include <SFGUI\SFGUI.hpp> 
+#include <SFGUI\Widgets.hpp> 
 
-/*int operator -(const std::pair<int, int>& pair1, const std::pair<int, int>& pair2)
+#include <SFML\Graphics.hpp> 
+#include <iostream> 
+
+sfg::SFGUI but; 
+sf::RenderWindow render_window(sf::VideoMode(800, 600), "Cardiorgam");
+sf::Event event;
+sf::Texture backgroundTexture;
+sf::Sprite background;
+
+int DrawButton(); 
+
+int Events()
 {
-#define PAIR(name, number) std::get<number>(name)
+	while (render_window.pollEvent(event))
+	{
+		switch (event.type)
+		{
+		case sf::Event::Closed:
+			render_window.close();
+			break;
+		default:
+			break;
+		}
+	}
 
-#define x0 PAIR(pair1, 0)
-#define x1 PAIR(pair1, 1)
-#define y0 PAIR(pair2, 0)
-#define y1 PAIR(pair2, 1)
+	return 0;
+}
 
-	return y0 - y1;
+int DrawBackground()
+{
+	render_window.setFramerateLimit(60);
+	if (!backgroundTexture.loadFromFile("cardiogram.jpg")) //! ¬—“¿¬»“‹ Õ”∆Õ€… ‘ŒÕ!!! !// 
+		std::cout << "Can't load Background" << "\n";
+	backgroundTexture.setSmooth(true);
+	background.setTexture(backgroundTexture);
+	render_window.draw(background);
 
-#undef y1
-#undef y0
-#undef x1
-#undef x0
+	return 0;
+}
 
-#undef PAIR
-}*/
+int DrawInterface()
+{
+	DrawBackground();
+	DrawButton(); 
+
+	return 0;
+}
+
+int DrawButton()
+{
+auto label = sfg::Label::Create("Hello world");
+
+auto button = sfg::Button::Create("Load");
+button->GetSignal(sfg::Widget::OnLeftClick).Connect([label] { label->SetText("Hello SFGUI, pleased to meet you!"); });
+
+auto box = sfg::Box::Create(sfg::Box::Orientation::VERTICAL, 5.0f);
+box->Pack(label);
+box->Pack(button, false);
+
+auto window = sfg::Window::Create();
+window->SetTitle("Hellow world");
+window->Add(box);
+
+return 0;
+}
 
 int main()
 {
-	std::pair<int, int> pair1(0, 5);
-	std::pair<int, int> pair2(0, 8);
-	std::cout << pair1 - pair2 << std::endl;
+	while (render_window.isOpen())
+	{
+		Events();
+
+		render_window.clear(sf::Color::White);
+		DrawInterface();
+		but.Display(render_window); 
+
+		render_window.display();
+	}
 
 	system("pause");
 
