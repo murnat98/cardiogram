@@ -26,9 +26,13 @@
     <ClCompile Include="..\..\..\src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\src\buttons.h" />
     <ClInclude Include="..\..\..\src\include\Cardiogram.h" />
     <ClInclude Include="..\..\..\src\include\Image.h" />
     <ClInclude Include="..\..\..\src\include\include.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{25CA00FE-BCEA-4B7E-A0B9-CFBAB5205388}</ProjectGuid>
@@ -111,7 +115,7 @@
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)..\..\3rdparty\SFML\lib;$(SolutionDir)..\..\3rdparty\SFGUI\lib;$(SolutionDir)..\..\3rdparty\FANN\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-main-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfgui-d.lib;fannfixed.lib;fanndouble.lib;fannfloat.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-main-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfgui-d.lib;fannfixedd.lib;fanndoubled.lib;fannfloatd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

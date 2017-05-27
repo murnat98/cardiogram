@@ -13,9 +13,6 @@
     <Filter Include="src\include">
       <UniqueIdentifier>{faab0556-aafc-49d6-91b9-79a75375f3cf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Result">
-      <UniqueIdentifier>{9e5bc280-70b6-4cf5-8ece-78b14f263947}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\cardiogram\Cardiogram.cpp">
@@ -44,5 +41,11 @@
     <ClInclude Include="..\..\..\src\include\Image.h">
       <Filter>src\include</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\src\buttons.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

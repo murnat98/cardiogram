@@ -3,6 +3,7 @@
 #include <include.h>
 #include <string>
 #include <Image.h>
+#include <array>
 
 #ifdef DEBUGMODE
 
@@ -19,13 +20,15 @@
 class Cardiogram
 {
 public:
-	Cardiogram(int type);
-	Cardiogram(const std::string& fileName, int type);
+	static const int IMAGES_COUNT = 12;
+
+	Cardiogram();
+	explicit Cardiogram(const std::array<std::string, IMAGES_COUNT>& fileName);
+	explicit Cardiogram(const std::array<Image, IMAGES_COUNT>&       images);
 
 	~Cardiogram();
 
-	void analyze() const; // now it is void, then it will be changed (may be some class Result)
-	void saveResult() const;
+	std::string analyze();
 
 #ifdef DEBUGMODE
 	bool ok  ()							  const;
@@ -33,6 +36,5 @@ public:
 #endif // DEBUGMODE
 
 private:
-	Image image_;
-	int type_;
+	std::array<Image, IMAGES_COUNT> images_;
 };

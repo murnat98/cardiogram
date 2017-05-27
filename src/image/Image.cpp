@@ -8,8 +8,23 @@ Image::Image(int type) :
 Image::Image(const std::string& fileName, int type) :
 	type_(type)
 {
-	loadFromFile(fileName);
+	image_.loadFromFile(fileName);
 	fileName_ = fileName;
+}
+
+bool Image::loadFromFile(const std::string& fileName)
+{
+	return image_.loadFromFile((fileName_ = fileName));
+}
+
+void Image::setType(int type)
+{
+	type_ = type;
+}
+
+int Image::getType() const
+{
+	return type_;
 }
 
 #ifdef DEBUGMODE

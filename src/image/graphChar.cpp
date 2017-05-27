@@ -1,7 +1,24 @@
 #include <Image.h>
 #include <algorithm>
 
-const int MAX_LINE = 100;
+const int MAX_LINE   = 100;
+const int AREA_COUNT = 50;
+
+int Image::getIsoline()
+{
+	size_t size = 0;
+	std::vector<int> yAreas(size = image_.getSize().y / AREA_COUNT);
+	yAreas.assign(size, 0);
+
+	for (const auto& point : graphics_)
+	{
+		int y = std::get<1>(point);
+
+		++yAreas[y / AREA_COUNT];
+	}
+
+	return std::distance(yAreas.begin(), std::max_element(yAreas.begin(), yAreas.end())) * AREA_COUNT;
+}
 
 int Image::get_R_Char()
 {	
@@ -15,7 +32,11 @@ int Image::get_R_Char()
 		++counter;
 	});
 
-	return counter ? sum / counter : -1; // TODO: think about returning the errors
+	int R = counter ? sum / counter : -1;
+	if (R == -1)
+		throw R_NOT_RIGHT;
+
+	return R - getIsoline(); // TODO: think about returning the errors
 }
 
 std::vector<int> Image::get_RR_Char()
@@ -67,7 +88,7 @@ void Image::getExtremes(Pixels& maxes) const
 		int x = std::get<0>(point);
 		int y = std::get<1>(point);
 
-		if (y >= absExtremum - MAX_LINE)
+		if (compareMaxLine(y, absExtremum, MAX_LINE))
 		{
 			if (extremumFlag || compare(y, localExtremum_y))
 			{
@@ -97,5 +118,17 @@ bool Image::compare(int a, int b) const
 	else
 	{
 		return a < b;
+	}
+}
+
+bool Image::compareMaxLine(int y, int extremum, int maxLine) const
+{
+	if (TYPE_CONTROL(type_))
+	{
+		return y <= extremum - maxLine;
+	}
+	else
+	{
+		return y >= extremum + maxLine;
 	}
 }

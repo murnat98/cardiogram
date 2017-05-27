@@ -27,7 +27,7 @@ Pixels Image::getGraph()
 		throw LOADFILE_ERROR;
 	}
 
-	sf::Vector2u imageSize = getSize();
+	sf::Vector2u imageSize = image_.getSize();
 	sf::Color color;
 
 	for (size_t x = 0; x < imageSize.x; x++) // TODO: to some function
@@ -37,7 +37,7 @@ Pixels Image::getGraph()
 
 		for (size_t y = 0; y < imageSize.y; y++)
 		{
-			color = getPixel(x, y); 
+			color = image_.getPixel(x, y); 
 			//std::cout << y << "  -  " << (int)color.r << " " << (int)color.g << " " << (int)color.b << std::endl;
 
 			if (isInRange(color, x, y, 0, 20)) // get graphics
